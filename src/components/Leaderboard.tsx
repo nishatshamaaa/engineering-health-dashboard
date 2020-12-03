@@ -11,6 +11,7 @@ import {
   Toolbar,
 } from "@material-ui/core";
 import React from "react";
+import useSWR from "swr";
 
 const StyledPaper = styled(Paper)({
   height: 400,
@@ -18,25 +19,30 @@ const StyledPaper = styled(Paper)({
   padding: 10,
 });
 
-const data = [
-  {
-    position: 1,
-    name: "Jonar",
-    reviews: 7,
-  },
-  {
-    position: 2,
-    name: "Peg",
-    reviews: 5,
-  },
-  {
-    position: 3,
-    name: "Duncam",
-    reviews: 3,
-  },
-];
+const API = "https://github-monitor.services.dev.propelleraero.com/";
+
+interface Data {
+  position: number;
+  name: string;
+  reviews: number;
+}
+
+const username = "TEST";
+const password = "TEST";
+
+const fetcher = (url: string) => {
+  let headers = new Headers();
+  headers.set("Authorization", "Basic " + btoa(username + ":" + password));
+  return fetch(url, { method: "GET", headers }).then((response) =>
+    response.json()
+  );
+};
 
 export default function Leaderboard() {
+  let { data, error } = useSWR<Data[]>(API, fetcher);
+
+  if (!data) data = [{ position: 1, name: "Bob", reviews: 2 }];
+
   return (
     <StyledPaper>
       <Toolbar>
