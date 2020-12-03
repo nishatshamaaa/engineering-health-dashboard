@@ -1,24 +1,22 @@
-import { Bar } from "@nivo/bar";
+import { ResponsiveBar } from "@nivo/bar";
 
 import React from "react";
 import { Typography, Toolbar } from "@material-ui/core";
 
 import { DARKER_NAVY, NAVY } from "../Constants";
-import { getPRCountByDay } from "../utils/getPRCount";
+import { getDailyReviewRaiseCount } from "../utils/getPRCount";
 
 export default function PRBarChart({ data, team }: any) {
-  const prCountByDay = getPRCountByDay(data, team);
+  const prCountByDay = getDailyReviewRaiseCount(data, team);
 
   return (
     <>
       <Toolbar>
         <Typography variant="h6" component="div">
-          Pull Requests Across Propeller
+          Pull Requests Raised Across Propeller
         </Typography>
       </Toolbar>
-      <Bar
-        width={700}
-        height={400}
+      <ResponsiveBar
         margin={{ top: 30, right: 80, bottom: 80, left: 80 }}
         data={prCountByDay}
         indexBy="dayName"

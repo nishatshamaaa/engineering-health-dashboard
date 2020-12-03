@@ -23,7 +23,7 @@ const repoToTeamMapping: any = {
 //   rusteyy: TEAMS.DE,
 // };
 
-export const getPRCountByDay = (data: any, team?: string) => {
+export const getDailyReviewRaiseCount = (data: any, team?: string) => {
   let prList = data?.data?.search?.edges;
   if (!prList) return;
 

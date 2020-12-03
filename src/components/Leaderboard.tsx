@@ -34,7 +34,7 @@ export default function Leaderboard(props: any) {
           </TableHead>
           <TableBody>
             {leaderBoard.map((author: any, index: number) => (
-              <TableRow>
+              <TableRow key={index}>
                 <TableCell>{index + 1}</TableCell>
                 <TableCell>
                   {index === 0 && <span>👑 </span>}
