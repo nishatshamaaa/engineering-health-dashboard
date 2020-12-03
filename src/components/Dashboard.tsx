@@ -115,7 +115,7 @@ const data = [
 const GridItem = (props: any) => {
   const [modalOpen, setModalOpen] = useState(false);
 
-  const onGridClick = () => setModalOpen(true);
+  const onGridClick = () => props.isClickable && setModalOpen(true);
 
   return (
     <>
@@ -144,7 +144,7 @@ export default function Dashboard() {
       <GridItem>
         <Leaderboard />
       </GridItem>
-      <GridItem>
+      <GridItem isClickable>
         <ExampleBarChart data={data} />
       </GridItem>
     </Grid>

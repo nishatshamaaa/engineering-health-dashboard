@@ -13,13 +13,18 @@ import {
 import React from "react";
 import useSWR from "swr";
 
+import { fetcher } from "../utils/githubApi";
+import { getLeaderBoard } from "../utils/getLeaderBoard";
+import spinner from "../assets/spinner.gif";
+
 const StyledPaper = styled(Paper)({
-  height: 400,
+  minHeight: 500,
   width: "100%",
   padding: 10,
+  overFlowY: "scroll",
 });
 
-const API = "https://github-monitor.services.dev.propelleraero.com/";
+const API = "https://github-monitor.services.dev.propelleraero.com/prs_by_dev/";
 
 interface Data {
   position: number;
@@ -27,21 +32,10 @@ interface Data {
   reviews: number;
 }
 
-const username = "TEST";
-const password = "TEST";
-
-const fetcher = (url: string) => {
-  let headers = new Headers();
-  headers.set("Authorization", "Basic " + btoa(username + ":" + password));
-  return fetch(url, { method: "GET", headers }).then((response) =>
-    response.json()
-  );
-};
-
 export default function Leaderboard() {
   let { data } = useSWR<Data[]>(API, fetcher);
 
-  if (!data) data = [{ position: 1, name: "Bob", reviews: 2 }];
+  const leaderBoard = data ? getLeaderBoard(data) : null;
 
   return (
     <StyledPaper>
@@ -50,26 +44,35 @@ export default function Leaderboard() {
           Leaderboard
         </Typography>
       </Toolbar>
-      <TableContainer component={Paper}>
-        <Table aria-label="simple table">
-          <TableHead>
-            <TableRow>
-              <TableCell>Position</TableCell>
-              <TableCell>Name</TableCell>
-              <TableCell>PRs Reviewed</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {data.map((datum) => (
+      {!leaderBoard ? (
+        <img
+          src={spinner}
+          height={30}
+          style={{ margin: "30px" }}
+          alt="loading..."
+        />
+      ) : (
+        <TableContainer component={Paper}>
+          <Table aria-label="simple table">
+            <TableHead>
               <TableRow>
-                <TableCell>{datum.position}</TableCell>
-                <TableCell>{datum.name}</TableCell>
-                <TableCell>{datum.reviews}</TableCell>
+                <TableCell>Position</TableCell>
+                <TableCell>Name</TableCell>
+                <TableCell>PRs Reviewed</TableCell>
               </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
+            </TableHead>
+            <TableBody>
+              {leaderBoard.map((author: any, index: number) => (
+                <TableRow>
+                  <TableCell>{index}</TableCell>
+                  <TableCell>{author[0]}</TableCell>
+                  <TableCell>{author[1]}</TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+      )}
     </StyledPaper>
   );
 }
