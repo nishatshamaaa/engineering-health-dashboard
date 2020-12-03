@@ -1,18 +1,27 @@
-import React, { ReactElement } from "react";
-import styled from "styled-components";
-import { DARKER_NAVY } from "../Constants";
+import React from "react";
+import { styled } from "@material-ui/core/styles";
 
-const StyledNavbar = styled.div`
-  width: 100%;
-  background-color: ${DARKER_NAVY};
-  position: fixed;
-  height: 40px;
-  padding-top: 20px;
-  padding-left: 50px;
-  font-weight: 800;
-  color: white;
-`;
+import AppBar from "@material-ui/core/AppBar";
+import Toolbar from "@material-ui/core/Toolbar";
+import Typography from "@material-ui/core/Typography";
+import CssBaseline from "@material-ui/core/CssBaseline";
+import { DARKER_NAVY, YELLOW } from "../Constants";
 
-export default function Navbar(): ReactElement {
-  return <StyledNavbar>Engineering Health Dashboard</StyledNavbar>;
+const StyledAppBar = styled(AppBar)({
+  background: YELLOW,
+  color: DARKER_NAVY,
+});
+
+export default function Navbar() {
+  return (
+    <>
+      <CssBaseline />
+      <StyledAppBar>
+        <Toolbar>
+          <Typography variant="h6">Engineering Health Dashboard</Typography>
+        </Toolbar>
+      </StyledAppBar>
+      <Toolbar />
+    </>
+  );
 }
