@@ -10,10 +10,24 @@ import Modal from "./Modal";
 import { fetcher } from "../utils/githubApi";
 // import PRNetwork from "./PRNetworkChart";
 import Spinner from "./Spinner";
-interface Data {
-  position: number;
-  name: string;
-  reviews: number;
+import PRHistogram from "./PRHistogram";
+
+export interface Node {
+  createdAt: string;
+  closedAt: string;
+}
+export interface Edge {
+  node: Node;
+}
+export interface Search {
+  edges: Edge[];
+}
+export interface Data {
+  data: InnerData;
+}
+
+interface InnerData {
+  search: Search;
 }
 
 const Chart = styled(Paper)({
@@ -53,7 +67,7 @@ interface DashboardProps {
 }
 
 export default function Dashboard(props: DashboardProps) {
-  let { data } = useSWR<Data[]>(API, fetcher(props.password));
+  let { data } = useSWR<Data>(API, fetcher(props.password));
   const [team, setTeam] = useState("");
 
   return (
@@ -68,6 +82,7 @@ export default function Dashboard(props: DashboardProps) {
       <GridItem isClickable team={team} setTeam={setTeam}>
         {!data ? <Spinner /> : <PRBarChart data={data} team={team} />}
       </GridItem>
+      <GridItem>{!data ? <Spinner /> : <PRHistogram data={data} />}</GridItem>
       {/* <Grid xs={6} item>
         <Chart>{!data ? <Spinner /> : <PRNetwork data={data} />}</Chart>
       </Grid> */}

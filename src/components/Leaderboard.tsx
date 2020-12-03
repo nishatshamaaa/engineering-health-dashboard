@@ -11,8 +11,13 @@ import {
 import React from "react";
 
 import { getLeaderBoard } from "../utils/getLeaderBoard";
+import { Data } from "./Dashboard";
 
-export default function Leaderboard(props: any) {
+interface LeaderboardProps {
+  data: Data;
+}
+
+export default function Leaderboard(props: LeaderboardProps) {
   const { data } = props;
   const leaderBoard = data ? getLeaderBoard(data) : [];
 

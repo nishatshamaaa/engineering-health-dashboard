@@ -1,22 +1,8 @@
 import React, { ReactElement } from "react";
 import Modal from "@material-ui/core/Modal";
 import { styled as style } from "@material-ui/core/styles";
-import styled from "styled-components";
 
-import {
-  Typography,
-  Toolbar,
-  FormControl,
-  InputLabel,
-  Grid,
-  Paper,
-} from "@material-ui/core";
-
-const StyledContainer = styled.div`
-  min-height: 450px;
-  width: 100%;
-  top: 0;
-`;
+import { Paper } from "@material-ui/core";
 
 const StyledModal = style(Modal)({
   display: "flex",

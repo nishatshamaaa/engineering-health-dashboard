@@ -15,7 +15,9 @@ const Container = styled.div`
 `;
 
 function App() {
-  const [password, setPassword] = useState<string | null>(null);
+  const [password, setPassword] = useState<string | undefined>(
+    process.env.REACT_APP_PASSWORD
+  );
   return (
     <Container>
       {password ? (
