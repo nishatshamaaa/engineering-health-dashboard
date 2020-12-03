@@ -33,9 +33,16 @@ export const getPRCountByDay = (data: any, team?: string) => {
       team &&
       prList.filter((pr: any) => {
         const nameMatch = repoNameRegex.exec(pr?.node?.url);
-        if (team === repoToTeamMapping[nameMatch ? nameMatch[1] : ""])
+        console.log(
+          team,
+          nameMatch && nameMatch[1],
+          repoToTeamMapping[nameMatch ? nameMatch[1] : ""]
+        );
+        if (TEAMS[team] === repoToTeamMapping[nameMatch ? nameMatch[1] : ""])
           return pr;
       });
+
+  console.log({ prList });
 
   const prByDay: any = [
     { day: 0, count: 0, dayName: "Sunday" },

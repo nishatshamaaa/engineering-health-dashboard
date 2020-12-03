@@ -17,7 +17,7 @@ export const SEMI_DARK_NAVY = "#272F38";
 export const DARK_NAVY = "#242B33";
 export const DARKER_NAVY = "#1D2228";
 
-export const TEAMS = {
+export const TEAMS: any = {
   DE: "Data dev",
   INFRASTRUCTURE: "Infrastructure",
   NOMAD: "Nomad",

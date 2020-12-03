@@ -26,8 +26,8 @@ const API = "https://github-monitor.services.dev.propelleraero.com/prs_by_dev/";
 
 const GridItem = (props: any) => {
   const [modalOpen, setModalOpen] = useState(false);
-
-  const onGridClick = () => props.isClickable && setModalOpen(true);
+  const { isClickable, team, setTeam } = props;
+  const onGridClick = () => isClickable && setModalOpen(true);
 
   return (
     <>
@@ -35,6 +35,8 @@ const GridItem = (props: any) => {
         <Modal
           closeModal={() => setModalOpen(false)}
           chart={props.children}
+          selectTeam={(t: string) => setTeam(t)}
+          team={team}
         ></Modal>
       )}
       <Grid onClick={onGridClick} xs={6} item>
@@ -46,6 +48,8 @@ const GridItem = (props: any) => {
 
 export default function Dashboard() {
   let { data } = useSWR<Data[]>(API, fetcher);
+  const [team, setTeam] = useState("");
+  console.log(team, "team");
 
   return (
     <Grid
@@ -58,8 +62,8 @@ export default function Dashboard() {
       <GridItem>
         <Leaderboard data={data} />
       </GridItem>
-      <GridItem isClickable>
-        <PRBarChart data={data} />
+      <GridItem isClickable team={team} setTeam={setTeam}>
+        <PRBarChart data={data} team={team} />
       </GridItem>
     </Grid>
   );

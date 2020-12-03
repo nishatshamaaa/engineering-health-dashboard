@@ -7,10 +7,8 @@ import { DARKER_NAVY, TEAMS } from "../Constants";
 import Spinner from "./Spinner";
 import { getPRCountByDay } from "../utils/getPRCount";
 
-const MyResponsiveBar = ({ data }: any) => {
-  const prCountByDay = getPRCountByDay(data, TEAMS.DE);
-
-  console.log(prCountByDay);
+const MyResponsiveBar = ({ data, team }: any) => {
+  const prCountByDay = getPRCountByDay(data, team);
 
   return (
     <>
