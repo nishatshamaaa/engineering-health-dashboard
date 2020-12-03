@@ -13,15 +13,15 @@ const repoToTeamMapping: any = {
   "aeropoints-firmware": TEAMS.HE,
 };
 
-const authorToTeamMapping = {
-  martinlecs: TEAMS.HE,
-  krzyho: TEAMS.INFRASTRUCTURE,
-  fredgreer: TEAMS.HE,
-  RacingTadpole: TEAMS.NOMAD,
-  keithbro: TEAMS.NOMAD,
-  Westermann: TEAMS.DE,
-  rusteyy: TEAMS.DE,
-};
+// const authorToTeamMapping = {
+//   martinlecs: TEAMS.HE,
+//   krzyho: TEAMS.INFRASTRUCTURE,
+//   fredgreer: TEAMS.HE,
+//   RacingTadpole: TEAMS.NOMAD,
+//   keithbro: TEAMS.NOMAD,
+//   Westermann: TEAMS.DE,
+//   rusteyy: TEAMS.DE,
+// };
 
 export const getPRCountByDay = (data: any, team?: string) => {
   let prList = data?.data?.search?.edges;
@@ -33,16 +33,8 @@ export const getPRCountByDay = (data: any, team?: string) => {
       team &&
       prList.filter((pr: any) => {
         const nameMatch = repoNameRegex.exec(pr?.node?.url);
-        console.log(
-          team,
-          nameMatch && nameMatch[1],
-          repoToTeamMapping[nameMatch ? nameMatch[1] : ""]
-        );
-        if (TEAMS[team] === repoToTeamMapping[nameMatch ? nameMatch[1] : ""])
-          return pr;
+        return TEAMS[team] === repoToTeamMapping[nameMatch ? nameMatch[1] : ""];
       });
-
-  console.log({ prList });
 
   const prByDay: any = [
     { day: 0, count: 0, dayName: "Sunday" },
@@ -55,7 +47,6 @@ export const getPRCountByDay = (data: any, team?: string) => {
   ];
 
   //assuming we have only one week of data
-
   prList.forEach((pr: any) => {
     let day = new Date(pr?.node?.createdAt).getDay();
     prByDay.find((p: any) => p.day === day).count++;

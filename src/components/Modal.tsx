@@ -13,7 +13,7 @@ import {
   Grid,
   Paper,
 } from "@material-ui/core";
-import { TEAMS, YELLOW } from "../Constants";
+import { TEAMS } from "../Constants";
 
 const StyledContainer = styled.div`
   min-height: 450px;

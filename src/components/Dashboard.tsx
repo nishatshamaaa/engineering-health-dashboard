@@ -8,6 +8,8 @@ import PRBarChart from "./PRBarChart";
 import Leaderboard from "./Leaderboard";
 import Modal from "./Modal";
 import { fetcher } from "../utils/githubApi";
+import PRNetwork from "./PRNetworkChart";
+import Spinner from "./Spinner";
 interface Data {
   position: number;
   name: string;
@@ -15,7 +17,7 @@ interface Data {
 }
 
 const Chart = styled(Paper)({
-  height: 480,
+  height: 500,
   width: "100%",
   padding: 40,
   margin: 20,
@@ -49,7 +51,6 @@ const GridItem = (props: any) => {
 export default function Dashboard() {
   let { data } = useSWR<Data[]>(API, fetcher);
   const [team, setTeam] = useState("");
-  console.log(team, "team");
 
   return (
     <Grid
@@ -59,12 +60,13 @@ export default function Dashboard() {
       alignItems="center"
       spacing={10}
     >
-      <GridItem>
-        <Leaderboard data={data} />
-      </GridItem>
+      <GridItem>{!data ? <Spinner /> : <Leaderboard data={data} />}</GridItem>
       <GridItem isClickable team={team} setTeam={setTeam}>
-        <PRBarChart data={data} team={team} />
+        {!data ? <Spinner /> : <PRBarChart data={data} team={team} />}
       </GridItem>
+      <Grid xs={6} item>
+        <Chart>{!data ? <Spinner /> : <PRNetwork data={data} />}</Chart>
+      </Grid>
     </Grid>
   );
 }
