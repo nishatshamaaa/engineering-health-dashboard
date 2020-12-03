@@ -41,7 +41,7 @@ export default function Leaderboard() {
     <StyledPaper>
       <Toolbar>
         <Typography variant="h6" component="div">
-          Leaderboard
+          Pull Request Leaderboard
         </Typography>
       </Toolbar>
       {!leaderBoard ? (
@@ -58,7 +58,7 @@ export default function Leaderboard() {
               <TableRow>
                 <TableCell>Position</TableCell>
                 <TableCell>Name</TableCell>
-                <TableCell>PRs Reviewed</TableCell>
+                <TableCell>PRs Opened</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
