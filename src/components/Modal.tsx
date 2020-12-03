@@ -12,7 +12,7 @@ const StyledModal = styled(Modal)({
 });
 
 const StyledPaper = styled(Paper)({
-  width: "80%",
+  width: "60%",
   outline: "none",
 });
 

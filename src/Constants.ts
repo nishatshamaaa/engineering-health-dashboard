@@ -16,3 +16,10 @@ export const NAVY = "#2C343F";
 export const SEMI_DARK_NAVY = "#272F38";
 export const DARK_NAVY = "#242B33";
 export const DARKER_NAVY = "#1D2228";
+
+export const TEAMS = {
+  DE: "Data dev",
+  INFRASTRUCTURE: "Infrastructure",
+  NOMAD: "Nomad",
+  HE: "Hardware",
+};

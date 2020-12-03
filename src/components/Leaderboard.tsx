@@ -11,46 +11,30 @@ import {
   Toolbar,
 } from "@material-ui/core";
 import React from "react";
-import useSWR from "swr";
 
-import { fetcher } from "../utils/githubApi";
 import { getLeaderBoard } from "../utils/getLeaderBoard";
-import spinner from "../assets/spinner.gif";
+import Spinner from "./Spinner";
 
 const StyledPaper = styled(Paper)({
-  minHeight: 400,
+  minHeight: 450,
   width: "100%",
   padding: 30,
   overFlowY: "scroll",
 });
 
-const API = "https://github-monitor.services.dev.propelleraero.com/prs_by_dev/";
-
-interface Data {
-  position: number;
-  name: string;
-  reviews: number;
-}
-
-export default function Leaderboard() {
-  let { data } = useSWR<Data[]>(API, fetcher);
-
+export default function Leaderboard(props: any) {
+  const { data } = props;
   const leaderBoard = data ? getLeaderBoard(data) : null;
 
   return (
-    <StyledPaper>
+    <>
       <Toolbar>
         <Typography variant="h6" component="div">
           Pull Request Leaderboard
         </Typography>
       </Toolbar>
       {!leaderBoard ? (
-        <img
-          src={spinner}
-          height={30}
-          style={{ margin: "30px" }}
-          alt="loading..."
-        />
+        <Spinner />
       ) : (
         <TableContainer>
           <Table aria-label="simple table">
@@ -73,6 +57,6 @@ export default function Leaderboard() {
           </Table>
         </TableContainer>
       )}
-    </StyledPaper>
+    </>
   );
 }
