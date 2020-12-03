@@ -39,7 +39,7 @@ const fetcher = (url: string) => {
 };
 
 export default function Leaderboard() {
-  let { data, error } = useSWR<Data[]>(API, fetcher);
+  let { data } = useSWR<Data[]>(API, fetcher);
 
   if (!data) data = [{ position: 1, name: "Bob", reviews: 2 }];
 

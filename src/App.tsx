@@ -3,7 +3,6 @@ import styled from "styled-components";
 
 import "./App.css";
 import Navbar from "./components/Navbar";
-import ExampleBarChart from "./components/ExampleBarChart";
 import Dashboard from "./components/Dashboard";
 
 const Container = styled.div`

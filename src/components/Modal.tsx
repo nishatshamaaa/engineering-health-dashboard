@@ -1,6 +1,8 @@
 import React from "react";
 import Modal from "@material-ui/core/Modal";
 import { styled } from "@material-ui/core/styles";
+import Grid from "@material-ui/core/Grid";
+
 import Paper from "@material-ui/core/Paper";
 
 const StyledModal = styled(Modal)({
@@ -11,6 +13,7 @@ const StyledModal = styled(Modal)({
 
 const StyledPaper = styled(Paper)({
   width: "80%",
+  outline: "none",
 });
 
 type Props = {
@@ -32,7 +35,22 @@ export default function ChartModal(props: Props) {
         aria-describedby="server-modal-description"
         onBackdropClick={props.closeModal}
       >
-        <StyledPaper>{props.chart}</StyledPaper>
+        <StyledPaper>
+          <Grid
+            container
+            direction="row"
+            justify="center"
+            alignItems="center"
+            spacing={10}
+          >
+            <Grid xs={8} item>
+              {props.chart}
+            </Grid>
+            <Grid xs={4} item>
+              Filters here
+            </Grid>
+          </Grid>
+        </StyledPaper>
       </StyledModal>
     </div>
   );

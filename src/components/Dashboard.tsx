@@ -12,7 +12,7 @@ const data = [
     burger: 118,
     burgerColor: "hsl(180, 70%, 50%)",
     sandwich: 84,
-    sandwichColor: "hsl(162, 70%, 50%)",
+    sandwichColor: "hsel(162, 70%, 50%)",
     kebab: 55,
     kebabColor: "hsl(208, 70%, 50%)",
     fries: 136,

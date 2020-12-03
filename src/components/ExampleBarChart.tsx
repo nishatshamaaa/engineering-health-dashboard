@@ -7,6 +7,8 @@ const Chart = styled(Paper)({
   height: 400,
   width: "100%",
   padding: 10,
+  margin: 20,
+  outline: "none",
 });
 
 const MyResponsiveBar = ({ data }: { data: Array<any> }) => {
