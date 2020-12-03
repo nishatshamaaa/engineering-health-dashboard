@@ -18,9 +18,9 @@ import { getLeaderBoard } from "../utils/getLeaderBoard";
 import spinner from "../assets/spinner.gif";
 
 const StyledPaper = styled(Paper)({
-  minHeight: 500,
+  minHeight: 400,
   width: "100%",
-  padding: 10,
+  padding: 30,
   overFlowY: "scroll",
 });
 
@@ -52,7 +52,7 @@ export default function Leaderboard() {
           alt="loading..."
         />
       ) : (
-        <TableContainer component={Paper}>
+        <TableContainer>
           <Table aria-label="simple table">
             <TableHead>
               <TableRow>
@@ -64,7 +64,7 @@ export default function Leaderboard() {
             <TableBody>
               {leaderBoard.map((author: any, index: number) => (
                 <TableRow>
-                  <TableCell>{index}</TableCell>
+                  <TableCell>{index + 1}</TableCell>
                   <TableCell>{author[0]}</TableCell>
                   <TableCell>{author[1]}</TableCell>
                 </TableRow>
