@@ -1,23 +1,22 @@
 {
   "files": {
     "main.css": "/engineering-health-dashboard/static/css/main.ea1455b2.chunk.css",
-    "main.js": "/engineering-health-dashboard/static/js/main.b2f93add.chunk.js",
-    "main.js.map": "/engineering-health-dashboard/static/js/main.b2f93add.chunk.js.map",
-    "runtime-main.js": "/engineering-health-dashboard/static/js/runtime-main.27c093b4.js",
-    "runtime-main.js.map": "/engineering-health-dashboard/static/js/runtime-main.27c093b4.js.map",
-    "static/js/2.ca5db6ac.chunk.js": "/engineering-health-dashboard/static/js/2.ca5db6ac.chunk.js",
-    "static/js/2.ca5db6ac.chunk.js.map": "/engineering-health-dashboard/static/js/2.ca5db6ac.chunk.js.map",
-    "static/js/3.d3169cd8.chunk.js": "/engineering-health-dashboard/static/js/3.d3169cd8.chunk.js",
-    "static/js/3.d3169cd8.chunk.js.map": "/engineering-health-dashboard/static/js/3.d3169cd8.chunk.js.map",
+    "main.js": "/engineering-health-dashboard/static/js/main.5af54526.chunk.js",
+    "main.js.map": "/engineering-health-dashboard/static/js/main.5af54526.chunk.js.map",
+    "runtime-main.js": "/engineering-health-dashboard/static/js/runtime-main.6a41a441.js",
+    "runtime-main.js.map": "/engineering-health-dashboard/static/js/runtime-main.6a41a441.js.map",
+    "static/js/2.83250073.chunk.js": "/engineering-health-dashboard/static/js/2.83250073.chunk.js",
+    "static/js/2.83250073.chunk.js.map": "/engineering-health-dashboard/static/js/2.83250073.chunk.js.map",
+    "static/js/3.428c7449.chunk.js": "/engineering-health-dashboard/static/js/3.428c7449.chunk.js",
+    "static/js/3.428c7449.chunk.js.map": "/engineering-health-dashboard/static/js/3.428c7449.chunk.js.map",
     "index.html": "/engineering-health-dashboard/index.html",
     "static/css/main.ea1455b2.chunk.css.map": "/engineering-health-dashboard/static/css/main.ea1455b2.chunk.css.map",
-    "static/js/2.ca5db6ac.chunk.js.LICENSE.txt": "/engineering-health-dashboard/static/js/2.ca5db6ac.chunk.js.LICENSE.txt",
-    "static/media/spinner.df897d1b.gif": "/engineering-health-dashboard/static/media/spinner.df897d1b.gif"
+    "static/js/2.83250073.chunk.js.LICENSE.txt": "/engineering-health-dashboard/static/js/2.83250073.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.27c093b4.js",
-    "static/js/2.ca5db6ac.chunk.js",
+    "static/js/runtime-main.6a41a441.js",
+    "static/js/2.83250073.chunk.js",
     "static/css/main.ea1455b2.chunk.css",
-    "static/js/main.b2f93add.chunk.js"
+    "static/js/main.5af54526.chunk.js"
   ]
 }
