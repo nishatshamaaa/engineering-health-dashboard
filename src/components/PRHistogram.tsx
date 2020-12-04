@@ -29,22 +29,10 @@ const makeData = (data: Data): RBData[] => {
     return diff;
   });
 
-  console.log({ timeToClose });
-
-  // const filteredTimeToClose = timeToClose.filter((ttc) => ttc < 200);
-
-  const min = Math.min(...timeToClose);
   const max = Math.max(...timeToClose);
   const nBins = max;
-  // const binSize = 1; // (max - min) / max;
-  console.log({ min, max });
-
-  // const bins = range(nBins).map((i) => {
-  //   return [i * binSize, (i + 1) * binSize];
-  // });
 
   const bins = range(nBins).map((i) => [i * 1, (i + 1) * 1]);
-  console.log({ bins });
 
   const finalData = bins.map((bin) => {
     return {

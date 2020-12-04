@@ -5,8 +5,9 @@ import { Typography, Toolbar } from "@material-ui/core";
 
 import { DARKER_NAVY, NAVY } from "../Constants";
 import { getDailyReviewRaiseCount } from "../utils/getPRCount";
+import { Data } from "./Dashboard";
 
-export default function PRBarChart({ data, team }: any) {
+export default function PRBarChart({ data, team }: { data: Data; team: any }) {
   const prCountByDay = getDailyReviewRaiseCount(data, team);
 
   return (
@@ -18,7 +19,7 @@ export default function PRBarChart({ data, team }: any) {
       </Toolbar>
       <ResponsiveBar
         margin={{ top: 30, right: 80, bottom: 80, left: 80 }}
-        data={prCountByDay}
+        data={prCountByDay as any}
         indexBy="dayName"
         keys={["count"]}
         labelTextColor={NAVY}

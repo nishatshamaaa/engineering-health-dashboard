@@ -1,3 +1,4 @@
+import { Data } from "../components/Dashboard";
 import { TEAMS } from "../Constants";
 
 const repoToTeamMapping: any = {
@@ -23,20 +24,18 @@ const repoToTeamMapping: any = {
 //   rusteyy: TEAMS.DE,
 // };
 
-export const getDailyReviewRaiseCount = (data: any, team?: string) => {
-  let prList = data?.data?.search?.edges;
+export const getDailyReviewRaiseCount = (data: Data, team?: string) => {
+  let prList = data.data.search.edges;
   if (!prList) return;
 
   const repoNameRegex = /https:\/\/github.com\/PropellerAero\/(.*?)\//;
   if (team)
-    prList =
-      team &&
-      prList.filter((pr: any) => {
-        const nameMatch = repoNameRegex.exec(pr?.node?.url);
-        return TEAMS[team] === repoToTeamMapping[nameMatch ? nameMatch[1] : ""];
-      });
+    prList = prList.filter((pr) => {
+      const nameMatch = repoNameRegex.exec(pr.node.url);
+      return nameMatch ? TEAMS[team] === repoToTeamMapping[nameMatch[1]] : null;
+    });
 
-  const prByDay: any = [
+  const prByDay = [
     { day: 0, count: 0, dayName: "Sunday" },
     { day: 1, count: 0, dayName: "Monday" },
     { day: 2, count: 0, dayName: "Tuesday" },
@@ -47,9 +46,10 @@ export const getDailyReviewRaiseCount = (data: any, team?: string) => {
   ];
 
   //assuming we have only one week of data
-  prList.forEach((pr: any) => {
-    let day = new Date(pr?.node?.createdAt).getDay();
-    prByDay.find((p: any) => p.day === day).count++;
+  prList.forEach((pr) => {
+    let day = new Date(pr.node.createdAt).getDay();
+    const x = prByDay.find((p) => p.day === day);
+    if (x) x.count++;
   });
 
   return prByDay;

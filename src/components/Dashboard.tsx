@@ -2,19 +2,19 @@ import Grid from "@material-ui/core/Grid";
 import React, { useState } from "react";
 import useSWR from "swr";
 import { styled } from "@material-ui/core/styles";
-import { Paper } from "@material-ui/core";
+import { CircularProgress, Paper } from "@material-ui/core";
 
 import PRBarChart from "./PRBarChart";
 import Leaderboard from "./Leaderboard";
 import Modal from "./Modal";
 import { fetcher } from "../utils/githubApi";
 // import PRNetwork from "./PRNetworkChart";
-import Spinner from "./Spinner";
 import PRHistogram from "./PRHistogram";
 
 export interface Node {
   createdAt: string;
   closedAt: string;
+  url: string;
 }
 export interface Edge {
   node: Node;
@@ -76,15 +76,20 @@ export default function Dashboard(props: DashboardProps) {
       direction="row"
       justify="center"
       alignItems="center"
+      alignContent="center"
       spacing={10}
     >
-      <GridItem>{!data ? <Spinner /> : <Leaderboard data={data} />}</GridItem>
-      <GridItem isClickable team={team} setTeam={setTeam}>
-        {!data ? <Spinner /> : <PRBarChart data={data} team={team} />}
+      <GridItem>
+        {!data ? <CircularProgress /> : <Leaderboard data={data} />}
       </GridItem>
-      <GridItem>{!data ? <Spinner /> : <PRHistogram data={data} />}</GridItem>
+      <GridItem isClickable team={team} setTeam={setTeam}>
+        {!data ? <CircularProgress /> : <PRBarChart data={data} team={team} />}
+      </GridItem>
+      <GridItem>
+        {!data ? <CircularProgress /> : <PRHistogram data={data} />}
+      </GridItem>
       {/* <Grid xs={6} item>
-        <Chart>{!data ? <Spinner /> : <PRNetwork data={data} />}</Chart>
+        <Chart>{!data ? <CircularProgress /> : <PRNetwork data={data} />}</Chart>
       </Grid> */}
     </Grid>
   );
