@@ -30,7 +30,7 @@ const makeData = (data: Data): RBData[] => {
   });
 
   const max = Math.max(...timeToClose);
-  const nBins = max;
+  const nBins = Math.min(max, 10);
 
   const bins = range(nBins).map((i) => [i * 1, (i + 1) * 1]);
 
