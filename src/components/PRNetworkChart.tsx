@@ -17,7 +17,7 @@ export default function PRNetwork(props: any) {
         nodes={nodes}
         links={links}
         margin={{ top: 0, right: 0, bottom: 0, left: 0 }}
-        repulsivity={12}
+        repulsivity={30}
         iterations={500}
         nodeColor={function (e) {
           return e.color;

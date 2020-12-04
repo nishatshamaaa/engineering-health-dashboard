@@ -8,7 +8,7 @@ import PRBarChart from "./PRBarChart";
 import Leaderboard from "./Leaderboard";
 import Modal from "./Modal";
 import { fetcher } from "../utils/githubApi";
-// import PRNetwork from "./PRNetworkChart";
+import PRNetwork from "./PRNetworkChart";
 import PRHistogram from "./PRHistogram";
 
 export interface Node {
@@ -88,9 +88,11 @@ export default function Dashboard(props: DashboardProps) {
       <GridItem>
         {!data ? <CircularProgress /> : <PRHistogram data={data} />}
       </GridItem>
-      {/* <Grid xs={6} item>
-        <Chart>{!data ? <CircularProgress /> : <PRNetwork data={data} />}</Chart>
-      </Grid> */}
+      <Grid xs={6} item>
+        <Chart>
+          {!data ? <CircularProgress /> : <PRNetwork data={data} />}
+        </Chart>
+      </Grid>
     </Grid>
   );
 }
